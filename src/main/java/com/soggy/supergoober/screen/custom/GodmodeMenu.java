@@ -8,7 +8,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 public class GodmodeMenu extends AbstractContainerMenu {
-    //private final Level level;
+    //comment
 
     public GodmodeMenu(Inventory inv, int containerId) {
         super(ModMenuTypes.GODMODE_MENU.get(),containerId);

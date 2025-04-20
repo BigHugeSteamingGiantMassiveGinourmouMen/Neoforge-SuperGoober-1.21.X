@@ -10,6 +10,7 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 
 @EventBusSubscriber(modid = SuperGoober.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEvents {
+    //comment
     @SubscribeEvent
     public static void registerBindings(RegisterKeyMappingsEvent event)
     {

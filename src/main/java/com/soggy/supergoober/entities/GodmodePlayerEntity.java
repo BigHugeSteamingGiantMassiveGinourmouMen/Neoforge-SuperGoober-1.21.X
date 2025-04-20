@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 public class GodmodePlayerEntity extends Player implements MenuProvider {
-
+    //comment
     public GodmodePlayerEntity(Level level, BlockPos pos, float yRot, GameProfile gameProfile) {
         super(level, pos, yRot, gameProfile);
     }

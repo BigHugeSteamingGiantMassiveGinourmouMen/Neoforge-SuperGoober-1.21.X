@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModMenuTypes {
-
+    //comment
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, SuperGoober.MODID);
 
     public static final DeferredHolder<MenuType<?>, MenuType<GodmodeMenu>> GODMODE_MENU = registerMenuType("godmode_menu");
