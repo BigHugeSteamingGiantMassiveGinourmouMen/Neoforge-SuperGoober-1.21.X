@@ -2,20 +2,27 @@ package com.soggy.supergoober;
 
 import com.ibm.icu.impl.StaticUnicodeSets;
 import com.soggy.supergoober.KeyMappings.ModKeyMappings;
+import com.soggy.supergoober.entities.GodmodePlayerEntity;
 import com.soggy.supergoober.screen.ModMenuTypes;
 import com.soggy.supergoober.screen.custom.GodmodeMenu;
 import com.soggy.supergoober.screen.custom.GodmodeScreen;
 import net.minecraft.client.KeyMapping;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuConstructor;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -100,17 +107,14 @@ public class SuperGoober
     }
 
     @SubscribeEvent
-    public void registerBindings(RegisterKeyMappingsEvent event) {
-        event.register(ModKeyMappings.GodmodeMapping);
-    }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event)
     {
         Player p = event.getEntity();
-        if(p.getTags().contains("Godmode") && !p.level().isClientSide())
-        while(ModKeyMappings.GodmodeMapping.consumeClick()) {
-            ((ServerPlayer) p).openMenu(new SimpleMenuProvider(new GodmodeMenu(null, p.getInventory()),"GodModeMenu"));
+        if(p.getTags().contains("Godmode") && !p.level().isClientSide()) {
+            GodmodePlayerEntity gPlayer = new GodmodePlayerEntity(p.level(),null,0,p.getGameProfile());
+            while (ModKeyMappings.GodmodeMapping.consumeClick()) {
+                ((ServerPlayer) p).openMenu(new SimpleMenuProvider(gPlayer,Component.literal("Godmode")));
+            }
         }
     }
 }

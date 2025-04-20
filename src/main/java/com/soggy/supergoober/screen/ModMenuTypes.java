@@ -15,11 +15,11 @@ public class ModMenuTypes {
 
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, SuperGoober.MODID);
 
-    public static final DeferredHolder<MenuType<?>, MenuType<GodmodeMenu>> GODMODE_MENU = registerMenuType("godmode_menu", null);
+    public static final DeferredHolder<MenuType<?>, MenuType<GodmodeMenu>> GODMODE_MENU = registerMenuType("godmode_menu");
 
-    public static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory)
+    public static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name)
     {
-        return MENUS.register(name,() -> IMenuTypeExtension.create(factory));
+        return MENUS.register(name,() -> null);
     }
 
     public static void register(IEventBus eventBus)

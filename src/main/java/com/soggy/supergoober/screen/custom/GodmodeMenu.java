@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 public class GodmodeMenu extends AbstractContainerMenu {
     //private final Level level;
 
-    public GodmodeMenu(int containerId, Inventory inv) {
+    public GodmodeMenu(Inventory inv, int containerId) {
         super(ModMenuTypes.GODMODE_MENU.get(),containerId);
 
         addPlayerHotbar(inv);
