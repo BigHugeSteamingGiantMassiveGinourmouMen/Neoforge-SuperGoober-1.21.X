@@ -7,10 +7,10 @@ import net.neoforged.neoforge.client.settings.KeyModifier;
 import org.lwjgl.glfw.GLFW;
 
 public final class ModKeyMappings {
-    //Braeden's godmode menu mapping
+
     //works in any screen
     //"F" key default map
     //changed in misc category of settings
-    public static final KeyMapping GodmodeMapping = new KeyMapping("GodmodeMenu Opener", KeyConflictContext.UNIVERSAL,InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_F,"key.categories.misc");
+    public static final KeyMapping LifestealerMapping = new KeyMapping("Lifestealer Permanent Upgrades", KeyConflictContext.UNIVERSAL,InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_F,"key.categories.misc");
     //comment
 }
