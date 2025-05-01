@@ -3,6 +3,7 @@ package com.soggy.supergoober.screen.custom;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.soggy.supergoober.Buttons.StrengthUp;
 import com.soggy.supergoober.SuperGoober;
+import com.soggy.supergoober.events.GameEvents;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
@@ -15,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.function.Supplier;
 
 public class LifestealerScreen extends Screen {
-    public static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(SuperGoober.MODID,"textures/gui/LifestealerScreen.png");
+    public static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(SuperGoober.MODID,"textures/gui/lifestealer_screen.png");
 
     public LifestealerScreen(Component title) {
         super(title);
@@ -40,8 +41,8 @@ public class LifestealerScreen extends Screen {
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         // Background is typically rendered first
-
-        // Render things here before widgets (background textures)
+        //this.renderBackground(graphics, mouseX, mouseY, partialTick);
+        //Render things here before widgets (background textures)
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, GUI_TEXTURE);
@@ -55,5 +56,10 @@ public class LifestealerScreen extends Screen {
 
         // Render things after widgets (tooltips)
     }
-
+    @Override
+    public void onClose()
+    {
+        super.onClose();
+        GameEvents.resetLifeScreen();
+    }
 }

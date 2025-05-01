@@ -11,6 +11,6 @@ public final class ModKeyMappings {
     //works in any screen
     //"F" key default map
     //changed in misc category of settings
-    public static final KeyMapping LifestealerMapping = new KeyMapping("Lifestealer Permanent Upgrades", KeyConflictContext.UNIVERSAL,InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_F,"key.categories.misc");
+    public static final KeyMapping LifestealerMapping = new KeyMapping("Lifestealer Permanent Upgrades", KeyConflictContext.UNIVERSAL,InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G,"key.categories.misc");
     //comment
 }
