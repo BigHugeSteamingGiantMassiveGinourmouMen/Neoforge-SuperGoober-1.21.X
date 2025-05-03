@@ -17,7 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.function.Supplier;
 
 public class LifestealerScreen extends Screen {
-    public static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(SuperGoober.MODID,"textures/gui/blank_lifestealer_screen.png");
+    public static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(SuperGoober.MODID,"textures/gui/lifestealer_screen_grey.png");
 
     public LifestealerScreen(Component title) {
         super(title);
@@ -50,8 +50,6 @@ public class LifestealerScreen extends Screen {
         int y = (scaledHeight - 186) / 2;
 
         graphics.blit(GUI_TEXTURE, x, y, 0, 0, 256, 186); //texture rendering
-
-        super.render(graphics, mouseX, mouseY, partialTick);
     }
     @Override
     public void onClose()
@@ -94,36 +92,41 @@ public class LifestealerScreen extends Screen {
         dynamicY+=bHeight+5;
         message = Component.literal("Speed (1 heart)"); //15 characters
         bWidth = (int) (message.getString().length()*6);
+        dynamicX = bWidth + scaledWidth/11;
 
-        SpeedUp speedButton = new SpeedUp(originX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
+        SpeedUp speedButton = new SpeedUp(dynamicX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
         this.addRenderableWidget(speedButton);
 
         dynamicY+=bHeight+5;
         message = Component.literal("JumpBoost (1 heart)"); //19 cha
         bWidth = (int) (message.getString().length()*6);
+        dynamicX = bWidth + scaledWidth/30;
 
-        JumpUp jumpButton = new JumpUp(originX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
+        JumpUp jumpButton = new JumpUp(dynamicX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
         this.addRenderableWidget(jumpButton);
 
         dynamicY+=bHeight+5;
         message = Component.literal("Haste (2 hearts)"); //16 cha
         bWidth = (int) (message.getString().length()*6);
+        dynamicX = bWidth + scaledWidth/13;
 
-        HasteUp hasteButton = new HasteUp(originX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
+        HasteUp hasteButton = new HasteUp(dynamicX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
         this.addRenderableWidget(hasteButton);
 
         dynamicY+=bHeight+5;
         message = Component.literal("FireResistance (2 hearts)"); //25 cha
         bWidth = (int) (message.getString().length()*6);
+        dynamicX = bWidth - scaledWidth/20;
 
-        FireRes fireResButton = new FireRes(originX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
+        FireRes fireResButton = new FireRes(dynamicX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
         this.addRenderableWidget(fireResButton);
 
         dynamicY+=bHeight+5;
         message = Component.literal("NightVision (1 heart)"); //21 cha
         bWidth = (int) (message.getString().length()*6);
+        dynamicX = bWidth;
 
-        NightVision nightVisionButton = new NightVision(originX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
+        NightVision nightVisionButton = new NightVision(dynamicX,dynamicY,bWidth,bHeight,message,Button::onPress,createNarration); //do onPress last
         this.addRenderableWidget(nightVisionButton);
 
         //creating toggle buttons
